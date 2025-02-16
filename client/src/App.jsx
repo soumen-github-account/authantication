@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Home from './Pages/Home.jsx'
+import Home from './Pages/Home'
 import Login from './Pages/Login'
 import EmailVerify from './Pages/EmailVerify'
 import ResetPassword from './Pages/ResetPassword'
