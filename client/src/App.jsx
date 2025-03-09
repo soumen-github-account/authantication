@@ -1,9 +1,9 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Home from './Pages/Home'
-import Login from './Pages/Login'
-import EmailVerify from './Pages/EmailVerify'
-import ResetPassword from './Pages/ResetPassword'
+import Home from "./src/Pages/Home"; 
+import Login from './src/Pages/Login'
+import EmailVerify from './src/Pages/EmailVerify'
+import ResetPassword from './src/Pages/ResetPassword'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
