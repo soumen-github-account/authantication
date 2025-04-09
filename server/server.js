@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import connectDB from './config/mongodb.js';
 import authRouter from './routes/authRoutes.js';
 import userRouter from './routes/userRoutes.js';
-import userAuth from './middleware/userauth.js';
+//import userAuth from './middleware/userauth.js';
 const app = express();
 const port = process.env.port || 8000
 
