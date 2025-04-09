@@ -14,7 +14,6 @@ const allowedOrigins = ['https://authantication-1.onrender.com']
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin: allowedOrigins, credentials: true}))
-app.use(cors())
 // API endpoint
 app.get('/',(req,res)=>{
     res.send("api");
