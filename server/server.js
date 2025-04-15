@@ -7,13 +7,23 @@ import authRouter from './routes/authRoutes.js';
 import userRouter from './routes/userRoutes.js';
 //import userAuth from './middleware/userauth.js';
 const app = express();
-const port = process.env.port || 8000
+const port = process.env.PORT || 8000
 
 connectDB();
-const allowedOrigins = ['https://authantication-1.onrender.com']
+const allowedOrigins = ['https://authantication-1.onrender.com','http://localhost:5173']
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin: allowedOrigins, credentials: true}))
+app.use(cors({
+    origin: function(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true
+  }));
+// app.use(cors({origin: allowedOrigins, credentials: true}))
 // API endpoint
 app.get('/',(req,res)=>{
     res.send("api");
