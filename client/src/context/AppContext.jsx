@@ -11,7 +11,6 @@ export const AppContextProvider = (props)=>{
     const backendUrl = import.meta.env.VITE_BACKEND_URL
     const [isLoggedin, setIsLoggedin]=useState(false)
     const [userData, setUserData]=useState(false)
-    const [token,setToken] = useState(localStorage.getItem('token')?localStorage.getItem('token'):false)
 
     const getAuthState = async ()=>{
         try {
@@ -41,7 +40,7 @@ export const AppContextProvider = (props)=>{
         backendUrl,
         isLoggedin, setIsLoggedin,
         userData, setUserData,
-        getUserData,token,setToken
+        getUserData
     }
     return (
         <AppContent.Provider value={value}>

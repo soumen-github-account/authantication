@@ -20,7 +20,6 @@ const Login = () => {
         const { data } = await axios.post(backendUrl+'/api/auth/register', {name, email, password})
         if(data.success){
           setIsLoggedin(true)
-          setToken(data.token)
           getUserData()
           navigate('/')
         } else{
@@ -31,7 +30,6 @@ const Login = () => {
           if(data.success){
             console.log(data.success)
             setIsLoggedin(true)
-            setToken(data.token)
             getUserData()
             navigate('/')
             toast.success("You are login")
