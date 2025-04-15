@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 // import { AppContent } from '../context/AppContext'
@@ -7,7 +7,7 @@ import axios from'axios'
 import { toast } from 'react-toastify'
 const Login = () => {
   const navigate = useNavigate()
-  const {backendUrl, setIsLoggedin, getUserData} = useContext(AppContent)
+  const {backendUrl, setIsLoggedin, getUserData,token,setToken} = useContext(AppContent)
   const [state, setState] = useState('Sign Up')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -20,6 +20,7 @@ const Login = () => {
         const { data } = await axios.post(backendUrl+'/api/auth/register', {name, email, password})
         if(data.success){
           setIsLoggedin(true)
+          setToken(data.token)
           getUserData()
           navigate('/')
         } else{
@@ -30,6 +31,7 @@ const Login = () => {
           if(data.success){
             console.log(data.success)
             setIsLoggedin(true)
+            setToken(data.token)
             getUserData()
             navigate('/')
             toast.success("You are login")
@@ -41,7 +43,11 @@ const Login = () => {
       toast.error(error.message)
     }
   }
-  
+  useEffect(()=>{
+    if(token){
+      navigate('/')
+    }
+  },[token])
   return (
     <div className='flex items-center justify-center min-h-screen px-6 sm:px-0 bg-gradient-to-br from-slate-200 to-slate-400'>
       <img onClick={()=> navigate('/')} src={assets.myauth} alt="" className='absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer' />
