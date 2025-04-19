@@ -18,8 +18,6 @@ const userAuth = async (req, res, next)=>{
         } else{
             return res.json({ success: false, message: "Not authorized" });
         }
-        console.log("Token:", req.cookies.token);
-        console.log("Decoded:", decoded);
         next();
     } catch(error){
         return res.json({ success: false, message: error.message });
