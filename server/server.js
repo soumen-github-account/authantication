@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 8000
 
 connectDB();
-// const allowedOrigins = ['http://localhost:5173/']
+const allowedOrigins = ['https://authantication-rulb.onrender.com']
 app.use(express.json());
 app.use(cookieParser());
 // app.use(cors({
@@ -23,7 +23,7 @@ app.use(cookieParser());
 //     },
 //     credentials: true
 //   }));
-app.use(cors({origin: 'https://authantication-1.onrender.com/', credentials: true}))
+app.use(cors({origin: allowedOrigins, credentials: true}))
 // API endpoint
 app.get('/',(req,res)=>{
     res.send("api");
