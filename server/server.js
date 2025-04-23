@@ -10,19 +10,10 @@ const app = express();
 const port = process.env.PORT || 8000
 
 connectDB();
-const allowedOrigins = ['https://authantication-rulb.onrender.com']
+const allowedOrigins = ['https://authantication-1.onrender.com']
 app.use(express.json());
 app.use(cookieParser());
-// app.use(cors({
-//     origin: function(origin, callback) {
-//       if (!origin || allowedOrigins.includes(origin)) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     credentials: true
-//   }));
+
 app.use(cors({origin: allowedOrigins, credentials: true}))
 // API endpoint
 app.get('/',(req,res)=>{
