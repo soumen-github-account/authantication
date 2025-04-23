@@ -1,14 +1,10 @@
 import jwt from "jsonwebtoken";
 
 const userAuth = async (req, res, next)=>{
-    // const token = req.cookies.token;
 
-    // if (!token) {
-    //     return res.status(401).json({ success: false, message: "Token not found" });
-    // }
-    const {token} =req.headers;
+    const {token} =req.cookies;
     if(!token){
-        return res.json({ success: false, message: "not autharized login again" });
+        return res.json({ success: false, message: "not authorized login again" });
     }
     try{
         const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
